@@ -3,7 +3,7 @@
 
 Name:		piqi
 Version:	0.6.3
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Set of languages and open-source tools for working with structured data.
 
 License:	ASL 2.0
@@ -12,11 +12,17 @@ Source0:	https://github.com/alavrik/piqi/archive/%{commit}/%{name}-v%{version}-%
 
 #https://github.com/alavrik/piqi/pull/28
 Patch0:		piqi-0.6.3-destdir.patch
+
+# Experimental feature, 'real' implementation in progress:
+# https://groups.google.com/d/msg/piqi/q76crTD9YTE/Pl7unXgVMnQJ
+Patch1:		piqi-0.6.3-default-values.patch
+
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
 BuildRequires:	ocaml
 BuildRequires:	ocaml-camlp4-devel
 BuildRequires:	ocaml-findlib
+
 # Required for 'make check'
 BuildRequires:	protobuf-devel
 
@@ -63,6 +69,7 @@ model similar to those of high-level programming languages.
 %prep
 %setup -qn %{name}-%{commit}
 %patch0 -p1
+%patch1 -p1
 
 %build
 export OCAMLPATH=
@@ -93,3 +100,5 @@ rm -rf %{buildroot}
 
 %changelog
 
+* Fri Apr 5 2013 Motiejus Jakštys <motiejus.jakstys@spilgames.com> 0.6.3-1
+- See `git log`.
