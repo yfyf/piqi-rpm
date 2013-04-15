@@ -3,7 +3,7 @@
 
 Name:		piqi
 Version:	0.6.3
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:	Set of languages and tools for working with structured data
 
 Group:	Development/Languages
@@ -123,6 +123,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+
+* Fri Apr 15 2013 Motiejus Jakštys <motiejus.jakstys@spilgames.com> 0.6.3-4
+- Stand-alone HTML documentation files
 
 * Fri Apr 15 2013 Motiejus Jakštys <motiejus.jakstys@spilgames.com> 0.6.3-3
 - Remove patch "default values in record definitions"

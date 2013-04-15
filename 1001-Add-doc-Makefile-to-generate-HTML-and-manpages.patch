@@ -1,4 +1,4 @@
-From de5ff2ff442c62942ca5f5493cd52afefbc55490 Mon Sep 17 00:00:00 2001
+From c7ea712777d06c7efbb240e56be3b4192b1268e1 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Motiejus=20Jak=C5=A1tys?= <motiejus.jakstys@spilgames.com>
 Date: Mon, 15 Apr 2013 09:38:46 +0300
 Subject: [PATCH] Add doc/Makefile to generate HTML and manpages
@@ -10,7 +10,7 @@ Subject: [PATCH] Add doc/Makefile to generate HTML and manpages
 
 diff --git a/doc/Makefile b/doc/Makefile
 new file mode 100644
-index 0000000..cb1f1ad
+index 0000000..da85e23
 --- /dev/null
 +++ b/doc/Makefile
 @@ -0,0 +1,22 @@
@@ -26,10 +26,10 @@ index 0000000..cb1f1ad
 +html: $(HTML) CHANGES.html
 +
 +%.html: %.md
-+	pandoc $< -o $@
++	pandoc -s $< -o $@
 +
 +CHANGES.html: ../CHANGES
-+	pandoc $< -o $@
++	pandoc -s $< -o $@
 +
 +piqi.1: tools.md
 +	pandoc -s -t man $< -o $@
