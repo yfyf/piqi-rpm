@@ -1,0 +1,603 @@
+diff --git a/doc/encodings.md b/doc/encodings.md
+index dd63127..335da36 100644
+--- a/doc/encodings.md
++++ b/doc/encodings.md
+@@ -1,5 +1,5 @@
+ This document describes various data encodings supported by Piqi and the mapping
+-between data structured defined by the [Piqi(/doc/piqi/) language and the
++between data structured defined by the [Piqi(piqi.html) language and the
+ supported encodings.
+ 
+ Piqi supports 5 data formats:
+@@ -7,7 +7,7 @@ Piqi supports 5 data formats:
+ -   [Google Protocol Buffers](http://code.google.com/p/protobuf/)
+ -   [JSON](http://json.org)
+ -   XML
+--   [Piq](/doc/piq/)
++-   [Piq](piq.html)
+ 
+     Piq is a human-friendly data representation language designed as part of the
+     Piqi project.
+@@ -19,9 +19,9 @@ Piqi supports 5 data formats:
+ 
+ 
+ Piqi provides native support for these data formats through language mappings
+-(currently, available for [OCaml](/doc/ocaml/) and [Erlang](/doc/erlang)).
++(currently, available for [OCaml](ocaml.html) and [Erlang (external)](http://piqi.org/doc/erlang)).
+ 
+-In addition, Piqi includes command-line [tools](/doc/tools/) for type-based
++In addition, Piqi includes command-line [tools](tools.html) for type-based
+ conversion between these formats. By using these tools, one can easily implement
+ format conversion functionality for programs written in almost any language that
+ has the ability to write and read data in at least one of Protocol Buffers, JSON
+@@ -36,7 +36,7 @@ Protocol Buffers encoding rules can be described in two stages:
+ 
+ 1.  Mapping from Piqi types to Protocol Buffer types.
+ 
+-    It is described in [Piqi -- Protocol Buffers compatibility](/doc/protobuf/)
++    It is described in [Piqi -- Protocol Buffers compatibility](protobuf.html)
+     section of the current documentation.
+ 
+ 2.  Rules for serializing Protocol Buffer data objects (values) into binary
+@@ -78,7 +78,7 @@ JSON
+ ----
+ 
+ For examples of how various Piqi values are represented in JSON, see the
+-[examples page](/examples/).
++[examples page (external)](http://piqi.org/examples/).
+ 
+ Primitive Piqi values, such as integers, floats and strings are represented using
+ correspondent JSON literals. Floating point NaN, positive and negative
+@@ -131,7 +131,7 @@ For example:
+     {"value": false}
+ 
+ In addition, there are a couple of custom extensions. At the movement, they are
+-implemented and used only by [`piqi convert`](/doc/tools/#piqiconvert)
++implemented and used only by [`piqi convert`](tools.html#piqiconvert)
+ command-line tool. In all other places (including OCaml, Erlang and Piqi-RPC
+ serialization) these features are supported when reading from JSON but
+ never used when writing JSON.
+diff --git a/doc/getopt.md b/doc/getopt.md
+index 421b9b3..4055a71 100644
+--- a/doc/getopt.md
++++ b/doc/getopt.md
+@@ -10,7 +10,7 @@ flavors:
+ -   The `piqi getopt` command-line tool which can be used from non-OCaml
+     programs and interactively. Being able to call it manually is useful for
+     debugging and understanding how Piqi getopt works. The `piqi getopt` command
+-    is documented [here](/doc/tools/#piqigetopt).
++    is documented [here](tools.html#piqigetopt).
+ 
+ Major difference between Piqi getopt and all other "getopt" libraries and
+ techniques, is that Piqi getopt uses type definition to validate command-line
+@@ -22,7 +22,7 @@ Piq data structure of any type, no matter how complex or deeply-nested the data
+ structure is, can be specified using command-line arguments.
+ 
+ The syntax of command-line arguments supported by Piqi getopt is roughly
+-equivalent to [Piq syntax](/doc/piq/).
++equivalent to [Piq syntax](piq.html).
+ 
+ Unlike Piq, Piqi getopt uses conventional `--<long-name>`, and `-<short-name>`
+ notations for field and option names (labels). Also, it allows to specify
+@@ -114,7 +114,7 @@ Parsing values of built-in types:
+ 
+ This example shows a `piqi getopt` shell command invocation for parsing the
+ object of type `person/person`. This type is defined in Piqi examples
+-[here](/examples/#person_piqi).
++[here (external)](http://piqi.org/examples/#person_piqi).
+ 
+     piqi getopt -t json --add-defaults --type person/person -- \
+         --name "J. Random Hacker" \
+diff --git a/doc/index.md b/doc/index.md
+index b912306..986257d 100644
+--- a/doc/index.md
++++ b/doc/index.md
+@@ -1,33 +1,33 @@
+ Piqi Languages and Tools
+ ------------------------
+ 
+--   [The Piqi data definition language](/doc/piqi/)
+--   [The Piq data representation language](/doc/piq/)
+--   [Piqi command-line tools](/doc/tools/)
++-   [The Piqi data definition language](piqi.html)
++-   [The Piq data representation language](piq.html)
++-   [Piqi command-line tools](tools.html)
+ 
+ Supported Programming Languages
+ -------------------------------
+ 
+--   [Piqi for OCaml User's Manual](/doc/ocaml/)
+--   [Piqi for Erlang User's Manual](/doc/erlang/)
++-   [Piqi for OCaml User's Manual](ocaml.html)
++-   [Piqi for Erlang User's Manual (external)](http://piqi.org/doc/erlang/)
+ 
+ Systems Interoperability
+ ------------------------
+ 
+ -   [Mapping and compatibility between Piqi and Google Protocol
+-    Buffers](/doc/protobuf/)
+--   [Encodings supported by Piqi](/doc/encodings/)
++    Buffers](protobuf.html)
++-   [Encodings supported by Piqi](encodings.html)
+ 
+ Systems Built on top of Piqi
+ ----------------------------
+ 
+--   [Piqi-RPC: an RPC-over-HTTP system for Erlang](/doc/piqi-rpc/)
+--   [Piqi getopt: parsing command-line arguments as data](/doc/getopt/)
++-   [Piqi-RPC: an RPC-over-HTTP system for Erlang (external)](http://piqi.org/doc/piqi-rpc/)
++-   [Piqi getopt: parsing command-line arguments as data](getopt.html)
+ 
+ Miscellaneous
+ -------------
+ 
+--   [Frequently Asked Questions](/doc/faq/)
++-   [Frequently Asked Questions (external)](http://piqi.org/doc/faq/)
+ -   [Change Log](https://github.com/alavrik/piqi/blob/master/CHANGES)
+--   [Project Rationale](/rationale/)
++-   [Project Rationale (external)](http://piqi.org/rationale/)
+ 
+diff --git a/doc/ocaml.md b/doc/ocaml.md
+index d12d337..34e89d1 100644
+--- a/doc/ocaml.md
++++ b/doc/ocaml.md
+@@ -3,7 +3,7 @@ Overview
+ 
+ Piqi includes a data serialization system for OCaml. It can be used for
+ serializing OCaml values in 4 different formats: Google Protocol Buffers,
+-[JSON](/doc/encodings/#json), [XML](/doc/encodings/#xml) and [Piq](/doc/piq/).
++[JSON](encodings.html#json), [XML](encodings.html#xml) and [Piq](piq.html).
+ 
+ A typical Piqi usage scenario involves the following steps:
+ 
+@@ -15,7 +15,7 @@ A typical Piqi usage scenario involves the following steps:
+     [here](https://github.com/alavrik/piqi/blob/master/INSTALL.ocaml).
+ 
+ **2. Describe data structures using the Piqi data definition language**
+-:   The [Piqi](/doc/piqi/) data definition language can describe many OCaml
++:   The [Piqi](piqi.html) data definition language can describe many OCaml
+     types, both primitive and user-defined. This includes int, uint32 and
+     uint64, floats, bools, strings, lists, arrays, records and polymorphic
+     variants (including sub-variants).
+@@ -60,7 +60,7 @@ an output `<ocaml-module>.ml` file in the current working directory. By default,
+ For each specified, imported or included module `<m>.piqi`, the compiler tries
+ to load and automatically include `<m>.ocaml.piqi`. This mechanism is called
+ *Extension Modules*. It is described in detail in the Piqi language
+-[section](/doc/piqi#extensionmodules).
++[section](piqi.html#extensionmodules).
+ 
+ Output file name as well as output directory can be overridden using the `-o`
+ and `-C` command-line options. In addition, output `.ml` file can be
+@@ -153,7 +153,7 @@ Both compilers accept the following command-line parameters.
+ 
+ There are some other command-line parameters that are not specific to "piqic
+ ocaml" compilers. They are documented in the [Piqi command-line
+-tools](/doc/tools/) section.
++tools](tools.html) section.
+ 
+ Piqi to OCaml mapping
+ ---------------------
+@@ -212,7 +212,7 @@ The table below represents correspondence between Piqi primitive types and OCaml
+ types.
+ 
+ (Mapping between Piqi and Protocol Buffers primitive type is documented
+-[here](/doc/protobuf/#primitivetypes)).
++[here](protobuf.html#primitivetypes)).
+ 
+   Piqi type(s)                                                    OCaml type   Protobuf type(s)
+   ----------------------------------------------------------      ------------ ------------------------------------------
+@@ -453,7 +453,7 @@ Examples
+ 
+     Piq interface compiler for OCaml (`piqic ocaml`) produces OCaml parsers and
+     generators from Piqi self-specification
+-    ([piqi.piqi](/self-definition/#piqi_piqi)). After that, an OCaml
++    ([piqi.piqi (external)](http://piqi.org/self-definition/#piqi_piqi)). After that, an OCaml
+     program reads (and writes back) Piqi self-specification represented as a
+     binary object.
+ 
+@@ -463,7 +463,7 @@ Examples
+ 
+     [examples/ocaml-custom-types](http://github.com/alavrik/piqi/tree/master/examples/ocaml-custom-types/)
+ 
+--   Example of using [Piq](/doc/piq) as a config file format
++-   Example of using [Piq](piq.html) as a config file format
+ 
+     [examples/ocaml-piq-config](http://github.com/alavrik/piqi/tree/master/examples/ocaml-piq-config/)
+ 
+diff --git a/doc/piq.md b/doc/piq.md
+index ed8bf64..0268f2f 100644
+--- a/doc/piq.md
++++ b/doc/piq.md
+@@ -26,7 +26,7 @@ features:
+     -   lists
+ 
+ Piq is statically typed and meant to be used together with the [Piqi data
+-definition language](/doc/piqi/) or Google Protocol Buffers. A lot of Piq
++definition language](piqi.html) or Google Protocol Buffers. A lot of Piq
+ features heavily rely on knowing data types. For example, in certain cases, it
+ is possible to omit field names in record representation.
+ 
+@@ -38,14 +38,14 @@ than to XML or JSON that were designed for representing "documents" or
+ Piq is a stream format: one Piq file (stream) can contain multiple typed values.
+ 
+ Although Piq is a text language, the actual *data* represented in Piq files can
+-be converted to and from [JSON, XML and Protocol Buffers](/doc/encodings/).
++be converted to and from [JSON, XML and Protocol Buffers](encodings.html).
+ 
+ If you are not familiar with Piq and want to get basic feeling of what it looks
+-like you can click though some real [examples](/examples/) and/or skim through
++like you can click though some real [examples (external)](http://piqi.org/examples/) and/or skim through
+ the rest of the page.
+ 
+ After getting familiar with the basics, refer to [Piqi
+-documentation](/doc/piqi/) to get information about what data structures can be
++documentation](piqi.html) to get information about what data structures can be
+ represented in Piq.
+ 
+ At the moment, there is no comprehensive reference manual, so a lot of concepts
+@@ -246,7 +246,7 @@ identifiers.
+ 
+ Piq *name* essentially represents the same concept as *atom* in various
+ programming languages and corresponds to *record flags* and *variant flags
+-(constants)* in the Piqi data model. Refer to [Piqi documentation](/doc/piqi/)
++(constants)* in the Piqi data model. Refer to [Piqi documentation](piqi.html)
+ for more information.
+ 
+ **Examples:**
+@@ -265,7 +265,7 @@ Type name is a *word* starting with `:` character. Remaining characters form a
+ Type names correspond to valid Piqi types. Typically, they are used as a part of
+ *Typed values* (see below).
+ 
+-[Piqi documentation](/doc/piqi/) includes detailed information about type names.
++[Piqi documentation](piqi.html) includes detailed information about type names.
+ 
+ **Examples:**
+ 
+@@ -341,7 +341,7 @@ Typed value starts with `typename` followed by a "non-name" value.
+     [ .a 0 .b 1 ]
+ 
+ This list represents a real (record) data structure that is taken from [person
+-example](/examples/#person_piq).
++example (external)](http://piqi.org/examples/#person_piq).
+ 
+     [
+         .name "J. Random Hacker"
+@@ -588,12 +588,12 @@ Piq streams can contain four different kinds of entries.
+     Type of implicitly typed values is determined by the default type name
+     specified by the last `(:<typename>)` directive or it can be provided
+     externally (e.g. using `--type` command-line parameter in [Piqi
+-    tools](/doc/tools/)).
++    tools](tools.html)).
+ 
+ -   Embedded Piqi modules.
+ 
+     Embedded Piqi modules contain type definitions. Each embedded Piqi module is
+-    a valid [Piqi language](/doc/piqi/) module, wrapped into `:piqi [ ... ]`
++    a valid [Piqi language](piqi.html) module, wrapped into `:piqi [ ... ]`
+     top-level container.
+ 
+     Embedded Piqi modules are treated specially. They are expected to represent
+@@ -604,9 +604,9 @@ Piq streams can contain four different kinds of entries.
+     When Piq entries that follow embedded Piqi modules are loaded, their type
+     names are first searched in embedded Piqi modules.
+ 
+-Piq streams can be represented in three different [formats](/doc/encodings/):
++Piq streams can be represented in three different [formats](encodings.html):
+ Piq (the native format), Pib and JSON. Streams can be converted between the
+-formats using [Piqi tools](/doc/tools/) or written and read directly by OCaml
++formats using [Piqi tools](tools.html) or written and read directly by OCaml
+ and Erlang programs.
+ 
+ **Examples:**
+@@ -661,7 +661,7 @@ Note that all of the above examples are based on built-in types (`int`, `float`,
+ `string`). Real-world `.piq` files would likely contain values of some
+ user-defined types.
+ 
+-There are more examples of `.piq` files on [Examples](/examples/) page.
++There are more examples of `.piq` files on [Examples (external)](http://piqi.org/examples/) page.
+ 
+ 
+ Style guidelines
+@@ -672,7 +672,7 @@ There are several code formatting rules that should be used for `.piq` and
+ code manipulation using text editors.
+ 
+ For cases that are not covered in this section, refer to [Piqi pretty-printing
+-tool](/doc/tools/) (`piqi pp <.piq | .piqi file>` commmand).
++tool](tools.html) (`piqi pp <.piq | .piqi file>` commmand).
+ 
+ 
+ ### Indentation
+diff --git a/doc/piqi.md b/doc/piqi.md
+index 3950251..10d7dd0 100644
+--- a/doc/piqi.md
++++ b/doc/piqi.md
+@@ -3,10 +3,10 @@ Overview
+ 
+ Piqi is a universal high-level data definition language.
+ 
+-At the moment, it works with 4 different [data formats](/doc/encodings/)
+-including JSON, XML, Protocol Buffers and [Piq](/doc/piq/) and has mappings to
+-[OCaml](/doc/ocaml/), [Erlang](/doc/erlang/) and [Protocol
+-Buffers](/doc/protobuf/) `.proto` definitions.
++At the moment, it works with 4 different [data formats](encodings.html)
++including JSON, XML, Protocol Buffers and [Piq](piq.html) and has mappings to
++[OCaml](ocaml.html), [Erlang (external)](http://piqi.org/doc/erlang/) and [Protocol
++Buffers](protobuf.html) `.proto` definitions.
+ 
+ 
+ Below is a brief overview of Piqi features.
+@@ -59,7 +59,7 @@ Below is a brief overview of Piqi features.
+ 
+ -   Piqi is self-defined and portable.
+ 
+-    Piqi module data structure is [defined](/self-definition/) using the Piqi
++    Piqi module data structure is [defined (external)](http://piqi.org/self-definition/) using the Piqi
+     language itself.
+ 
+     As a result, a Piqi module can be converted into a portable JSON, XML or
+@@ -74,7 +74,7 @@ Below is a brief overview of Piqi features.
+ -   The Piqi language is extensible.
+ 
+     The Piqi language is based on a general-purpose data representation language
+-    called [Piq](/doc/piq/).
++    called [Piq](piq.html).
+ 
+     Now, let's look at the following three properties.
+ 
+@@ -97,18 +97,18 @@ much better documented than Piqi. It may be useful to get familiar with Protocol
+ Buffers along with reading Piqi documentation.
+ 
+ For those who are familiar with Google Protocol Buffers, information about its
+-compatibility with Piqi can be found on [this page](/doc/protobuf/).
++compatibility with Piqi can be found on [this page](protobuf.html).
+ 
+-Some examples of Piqi specifications can be found [here](/examples/). The most
++Some examples of Piqi specifications can be found [here (external)](http://piqi.org/examples/). The most
+ complex Piqi specification example is the Piqi
+-[self-specification](/self-definition/).
++[self-specification (external)](http://piqi.org/self-definition/).
+ 
+ 
+ Lexical conventions
+ -------------------
+ 
+ The Piqi language described in the remaining part of the document is based on
+-Piq syntax which is specified [here](/doc/piq/).
++Piq syntax which is specified [here](piq.html).
+ 
+ In addition to general Piq rules, Piqi relies on some extra syntax elements,
+ such as identifiers that are used for type names, field name, option names and
+@@ -141,7 +141,7 @@ Piqi modules converted from Google Protocol Buffer specification normally have
+ `.proto.piqi` file extension.
+ 
+ `.piqi` and `.proto.piqi` are the only file extensions allowed for Piqi modules.
+-Other extensions are not recognized by [Piqi tools](/doc/tools/). (When the Piqi
++Other extensions are not recognized by [Piqi tools](tools.html). (When the Piqi
+ implementation resolves Piqi types and Piqi module names it searches for files
+ with `.piqi` or `.proto.piqi` extensions using module search paths.)
+ 
+@@ -170,7 +170,7 @@ including
+ 
+     .custom-field ocaml-name
+ 
+-will tell [Piqi tools](/doc/tools/) to ignore properties like `.ocaml-name
++will tell [Piqi tools](tools.html) to ignore properties like `.ocaml-name
+ "foo"` as they are only meaningful to `piqic ocaml`.
+ 
+ 
+@@ -339,7 +339,7 @@ Primitive types
+ 
+     Below is the full list of Piqi integer types. Their names reflect some
+     properties associated with their binary encoding and language mappings. See
+-    for example, [Piqi--Protocol Buffers mapping](/doc/protobuf/).
++    for example, [Piqi--Protocol Buffers mapping](protobuf.html).
+ 
+     -   `int`
+ 
+@@ -395,15 +395,15 @@ There are two special built-in types:
+      XML.
+ 
+      At low level, `piqi-any` maps to the `any` record defined in the Piqi
+-     [self-specification](/self-definition/).
++     [self-specification (external)](http://piqi.org/self-definition/).
+ 
+-     You can find some Piq examples [here](/examples/#piqi-any_piq).
++     You can find some Piq examples [here (external)](http://piqi.org/examples/#piqi-any_piq).
+ 
+ -   `piqi`
+ 
+      Values of this type are embedded Piqi modules. This type can not be used as
+      a valid *type name* inside type definitions (at least yet). However, it is
+-     recognized by Piqi [command-line tools](/doc/tools/) and used in Piq
++     recognized by Piqi [command-line tools](tools.html) and used in Piq
+      format.
+ 
+ 
+@@ -478,7 +478,7 @@ Fields can have the following properties:
+     must either defined for all fields or for none of the fields. When not
+     defined, Piqi implicitly generates codes by enumerating the fields in the
+     order they are defined in the record. See [Piqi--Protocol Buffers
+-    mapping](/doc/protobuf/) for details.
++    mapping](protobuf.html) for details.
+ 
+ -   `protobuf-packed` (optional, used with Protocol Buffer binary format)
+ 
+@@ -833,7 +833,7 @@ implementation uses this mechanism to extend its own specification with extra
+ features. For example, the following specification extends Piqi to support
+ Protocol Buffers properties:
+ 
+-[piqi.protobuf.piqi](/self-definition/#piqi_protobuf_piqi)
++[piqi.protobuf.piqi (external)](http://piqi.org/self-definition/#piqi_protobuf_piqi)
+ 
+ Similarly, support for OCaml-specific Piqi properties is provided by these two
+ specifications:
+@@ -846,7 +846,7 @@ Functions
+ ---------
+ 
+ The `function` directive provides a way to define abstract functions. Functions
+-were originally introduced for [Piqi-RPC](/doc/piqi-rpc/) that relies on
++were originally introduced for [Piqi-RPC (external)](http://piqi.org/doc/piqi-rpc/) that relies on
+ high-level function definitions.
+ 
+ Each defined function has a name and 3 types of parameters: *input*, *output*
+@@ -984,10 +984,10 @@ documentation sections that can be reliably represented and passed to
+ Piqi-light.
+ 
+ `.piqi` files can be printed in Piqi-light syntax using `piqi light`
+-[command](/doc/tools/#piqilight) (for the lack of a better name).
++[command](tools.html#piqilight) (for the lack of a better name).
+ 
+-For examples of Piqi-light syntax visit [Examples](/examples/) and
+-[Self-definition](/self-definition/) pages. All `.piqi` files there have a tab
++For examples of Piqi-light syntax visit [Examples (external)](http://piqi.org/examples/) and
++[Self-definition (external)](http://piqi.org/self-definition/) pages. All `.piqi` files there have a tab
+ where they are displayed in Piqi-light syntax.
+ 
+ 
+@@ -1005,7 +1005,7 @@ with some future Piqi features.
+ The guiding principle for this rule is that high-level Piqi type definitions
+ should resemble grammar rules.
+ 
+-Piqi pretty-printer from [Piqi tools](/doc/tools/) can be used to convert
++Piqi pretty-printer from [Piqi tools](tools.html) can be used to convert
+ "CamelCase" identifiers to "camel-case" (`piqi pp --normalize <.piqi> file`
+ command).
+ 
+@@ -1052,7 +1052,7 @@ name normalization won't be needed.
+ 
+ ### Code formatting
+ 
+-Since Piqi is based on Piq syntax, general [Piq](/doc/piq/#styleguidelines)
++Since Piqi is based on Piq syntax, general [Piq](piq.html#styleguidelines)
+ formatting rules apply.
+ 
+ 
+diff --git a/doc/protobuf.md b/doc/protobuf.md
+index 47c99ee..d2a6a3c 100644
+--- a/doc/protobuf.md
++++ b/doc/protobuf.md
+@@ -424,18 +424,18 @@ Examples
+     distribution. It was converted to Piqi ("addressbook.proto.piqi") using
+     `piqi of-proto` command.
+ 
+-    [addressbook.proto](/examples/#addressbook_proto)
++    [addressbook.proto (external)](http://piqi.org/examples/#addressbook_proto)
+ 
+ -   This example shows how Piqi type definitions are mapped to Protocol Buffers
+     type definitions.
+ 
+-    [def.piqi](/examples/#def_piqi)
++    [def.piqi (external)](http://piqi.org/examples/#def_piqi)
+ 
+ -   Advanced example demonstrating Piqi--Protobuf--C++ mapping.
+ 
+     `piqi to-proto` command produces Protocol Buffers specification (`.proto`)
+     from Piqi self-specification
+-    ([piqi.piqi](/self-definition/#piqi_piqi)). After that, a C++
++    ([piqi.piqi (external)](http://piqi.org/self-definition/#piqi_piqi)). After that, a C++
+     program reads Piqi self-specification represented as a binary object and
+     prints it out in Protocol Buffers text format.
+ 
+diff --git a/doc/tools.md b/doc/tools.md
+index 3cf82e8..15597c3 100644
+--- a/doc/tools.md
++++ b/doc/tools.md
+@@ -26,7 +26,7 @@ subcommands.
+     `.proto.piqi` files.
+ 
+     This option can be specified several times. See also `PIQI_PATH`
+-    [environment variable](#environmentvariables) below.
++    [environment variable](#environment-variables) below.
+ 
+     Note that modules included and imported from modules with scoped names are
+     searched in the importing/including module's directory first. For example,
+@@ -67,7 +67,7 @@ formats.
+ It also can be used to convert `.piqi` to `piq`, `json`, or `pib` formats by
+ embedding Piqi specification into the output data stream.
+ 
+-Piq encodings are described [here](/doc/encodings/).
++Piq encodings are described [here](encodings.html).
+ 
+ If both input and output files are not specified `stdin` and `stdout` will be
+ used respectively.
+@@ -133,7 +133,7 @@ Options:
+     formats.
+ 
+ `-e <extension-name>`
+-:   Automatically include [extension modules](/doc/piqi#extensionmodules)
++:   Automatically include [extension modules](piqi.html#extensionmodules)
+     `<extension-name>` when loading .piqi files.
+ 
+ ### piqi check
+@@ -155,7 +155,7 @@ Returns 0 if the file is valid.
+     formats.
+ 
+ `-e <extension-name>`
+-:   Automatically include [extension modules](/doc/piqi#extensionmodules)
++:   Automatically include [extension modules](piqi.html#extensionmodules)
+     `<extension-name>` when loading .piqi files.
+ 
+ 
+@@ -235,7 +235,7 @@ get a single `.piqi` specifications from several dependent `.piqi` modules.
+ :   Add module name if it wasn't originally present
+ 
+ `-e <extension-name>`
+-:   Automatically include [extension modules](/doc/piqi#extensionmodules)
++:   Automatically include [extension modules](piqi.html#extensionmodules)
+     `<extension-name>` when loading .piqi files.
+ 
+ 
+@@ -245,7 +245,7 @@ Usage: `piqi to-proto [options] <.piqi file>`
+ 
+ Converts `.piqi` file to `.piqi.proto`
+ 
+-The conversion rules are specified [here](/doc/protobuf/#piqitoprotomapping).
++The conversion rules are specified [here](protobuf.html#piqitoprotomapping).
+ 
+ Options:
+ 
+@@ -258,7 +258,7 @@ Usage: `piqi of-proto [options] <.proto file>`
+ 
+ Converts `.proto` file to `.proto.piqi`
+ 
+-The conversion rules are specified [here](/doc/protobuf/#prototopiqimapping).
++The conversion rules are specified [here](protobuf.html#prototopiqimapping).
+ 
+ Options:
+ 
+@@ -286,7 +286,7 @@ Options:
+ 
+ Usage: `piqi light [options] [<.piqi file>] [output-file]`
+ 
+-Prints `.piqi` file using [Piqi-light syntax](/doc/piqi/#piqilightsyntax).
++Prints `.piqi` file using [Piqi-light syntax](piqi.html#piqilightsyntax).
+ 
+ Options:
+ 
+@@ -301,7 +301,7 @@ Interprets command-line arguments as typed data, and outputs it in various
+ formats.
+ 
+ For description of command-line argument syntax and the way how arguments are
+-parsed see correspondent [section](/doc/getopt/) of the current documentation.
++parsed see correspondent [section](getopt.html) of the current documentation.
+ 
+ Options:
+ 
+@@ -390,7 +390,7 @@ Remote function's output can be printed in a variety of different formats: JSON,
+ XML, Protobuf, Piq (see `-t` option). Returned application errors (i.e. *error*
+ function parameter) will be printed to `stderr` in the requested format.
+ 
+-More details can be found in Piqi-RPC [documentation](/doc/piqi-rpc/).
++More details can be found in Piqi-RPC [documentation (external)](http://piqi.org/doc/piqi-rpc/).
+ 
+ Options:
+ 
+@@ -459,7 +459,7 @@ Prints Piqi version.
+ 
+ # EXAMPLES
+ 
+-For examples of Piqi tools usage, visit [Examples](/examples/) page or take a
++For examples of Piqi tools usage, visit [Examples (external)](http://piqi.org/examples/) page or take a
+ look at `test_piq`, `test_piqi` and `test_piqi_proto` shell scripts from
+ [examples directory](http://github.com/alavrik/piqi/tree/master/examples/) in
+ Piqi source distribution.

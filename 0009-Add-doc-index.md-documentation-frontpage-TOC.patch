@@ -1,0 +1,52 @@
+From 7243c4e40e83913b0f78258e6077eb30ee3cd0b2 Mon Sep 17 00:00:00 2001
+From: Anton Lavrik <alavrik@piqi.org>
+Date: Sun, 14 Apr 2013 01:19:59 -0500
+Subject: [PATCH 9/9] Add doc/index.md -- documentation frontpage/TOC
+
+---
+ doc/index.md |   33 +++++++++++++++++++++++++++++++++
+ 1 file changed, 33 insertions(+)
+ create mode 100644 doc/index.md
+
+diff --git a/doc/index.md b/doc/index.md
+new file mode 100644
+index 0000000..b912306
+--- /dev/null
++++ b/doc/index.md
+@@ -0,0 +1,33 @@
++Piqi Languages and Tools
++------------------------
++
++-   [The Piqi data definition language](/doc/piqi/)
++-   [The Piq data representation language](/doc/piq/)
++-   [Piqi command-line tools](/doc/tools/)
++
++Supported Programming Languages
++-------------------------------
++
++-   [Piqi for OCaml User's Manual](/doc/ocaml/)
++-   [Piqi for Erlang User's Manual](/doc/erlang/)
++
++Systems Interoperability
++------------------------
++
++-   [Mapping and compatibility between Piqi and Google Protocol
++    Buffers](/doc/protobuf/)
++-   [Encodings supported by Piqi](/doc/encodings/)
++
++Systems Built on top of Piqi
++----------------------------
++
++-   [Piqi-RPC: an RPC-over-HTTP system for Erlang](/doc/piqi-rpc/)
++-   [Piqi getopt: parsing command-line arguments as data](/doc/getopt/)
++
++Miscellaneous
++-------------
++
++-   [Frequently Asked Questions](/doc/faq/)
++-   [Change Log](https://github.com/alavrik/piqi/blob/master/CHANGES)
++-   [Project Rationale](/rationale/)
++
+-- 
+1.7.9.5
+

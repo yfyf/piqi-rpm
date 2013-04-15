@@ -1,0 +1,41 @@
+From de5ff2ff442c62942ca5f5493cd52afefbc55490 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Motiejus=20Jak=C5=A1tys?= <motiejus.jakstys@spilgames.com>
+Date: Mon, 15 Apr 2013 09:38:46 +0300
+Subject: [PATCH] Add doc/Makefile to generate HTML and manpages
+
+---
+ doc/Makefile |   22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+ create mode 100644 doc/Makefile
+
+diff --git a/doc/Makefile b/doc/Makefile
+new file mode 100644
+index 0000000..cb1f1ad
+--- /dev/null
++++ b/doc/Makefile
+@@ -0,0 +1,22 @@
++SRCS=$(wildcard *.md)
++HTML=$(patsubst %.md,%.html,$(SRCS))
++
++.PHONY: all clean man html
++
++all: man html
++
++man: piqi.1
++
++html: $(HTML) CHANGES.html
++
++%.html: %.md
++	pandoc $< -o $@
++
++CHANGES.html: ../CHANGES
++	pandoc $< -o $@
++
++piqi.1: tools.md
++	pandoc -s -t man $< -o $@
++
++clean:
++	rm -f $(HTML) piqi.1
+-- 
+1.7.9.5
+

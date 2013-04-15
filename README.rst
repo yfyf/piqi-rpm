@@ -3,13 +3,13 @@ piqi rpm spec
 
 This repository contains RPM spec for piqi_.
 
-These files are packaged:
+These items are packaged:
 
 1. ``/usr/bin/piqi``
-2. ``/usr/bin/piqic``
+2. ``PIQI(1)`` (manual page)
+3. HTML documentation.
 
-It also contains *experimental field values* patch, see ``piqi.spec``.
-
-Bundling man pages and documentation are in progress.
+This RPM SPEC is aimed to be equivalent to it's debian_ version.
 
 .. _piqi: http://piqi.org/
+.. _debian: https://github.com/Motiejus/piqi-deb
