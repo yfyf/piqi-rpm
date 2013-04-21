@@ -1,9 +1,9 @@
-%global commit 73ca0cf4e6a735979069e52f9ffae7e0a522b26b
+%global commit 749b6721ced278f87e743d163fa9dd62dcaadc6d
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:		piqi
-Version:	0.6.3
-Release:	4%{?dist}
+Version:	0.6.4
+Release:	1%{?dist}
 Summary:	Set of languages and tools for working with structured data
 
 Group:	Development/Languages
@@ -11,18 +11,6 @@ Group:	Development/Languages
 License:	ASL 2.0
 URL:		http://piqi.org
 Source0:	https://github.com/alavrik/piqi/archive/%{commit}/%{name}-v%{version}-%{shortcommit}.tar.gz
-
-Patch0: 0001-Bump-version-number-to-0.6.3-dev.patch
-Patch1: 0002-Respect-DESTDIR-parameter-in-install-target.patch
-Patch2: 0003-Move-installing-of-piqic-make-install-to-make-ocaml-.patch
-Patch3: 0004-Add-Motiejus-Jak-tys-to-THANKS.patch
-Patch4: 0005-Add-support-for-travis-ci-service.patch
-Patch5: 0006-Update-README-and-convert-it-to-Markdown.patch
-Patch6: 0007-Fix-test.cpp-compile-error.patch
-Patch7: 0008-Make-tools.md-better-suited-for-pandoc-t-man.patch
-Patch8: 0009-Add-doc-index.md-documentation-frontpage-TOC.patch
-Patch9: 1000-html_docs.patch
-Patch10:    1001-Add-doc-Makefile-to-generate-HTML-and-manpages.patch
 
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
@@ -77,17 +65,6 @@ model similar to those of high-level programming languages.
 
 %prep
 %setup -qn %{name}-%{commit}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
 
 
 %build
@@ -123,6 +100,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+
+* Fri Apr 21 2013 Motiejus Jakštys <motiejus.jakstys@spilgames.com> 0.6.4-1
+- Bump upstream 0.6.3 -> 0.6.4
 
 * Fri Apr 15 2013 Motiejus Jakštys <motiejus.jakstys@spilgames.com> 0.6.3-4
 - Stand-alone HTML documentation files
