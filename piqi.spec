@@ -1,8 +1,8 @@
-%global commit 749b6721ced278f87e743d163fa9dd62dcaadc6d
+%global commit d4e0d42922ae2069e025c73564d5a74bf7b78e11
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 
 Name:		piqi
-Version:	0.6.4
+Version:	0.6.5
 Release:	1%{?dist}
 Summary:	Set of languages and tools for working with structured data
 
@@ -100,6 +100,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+
+* Thu Nov 7 2013 Motiejus Jakštys <motiejus.jakstys@spilgames.com> 0.6.5-1
+- Bump upstream 0.6.4 -> 0.6.5
 
 * Fri Apr 21 2013 Motiejus Jakštys <motiejus.jakstys@spilgames.com> 0.6.4-1
 - Bump upstream 0.6.3 -> 0.6.4
