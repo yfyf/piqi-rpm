@@ -1,19 +1,20 @@
 %global commit d4e0d42922ae2069e025c73564d5a74bf7b78e11
-%global shortcommit %(c=%{commit}; echo ${c:0:7})
+%global shortcommit %(echo %{commit} | cut -c 1-7)
 
 Name:		piqi
 Version:	0.6.5
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Set of languages and tools for working with structured data
 
 Group:	Development/Languages
 
 License:	ASL 2.0
 URL:		http://piqi.org
-Source0:	https://github.com/alavrik/piqi/archive/%{commit}/%{name}-v%{version}-%{shortcommit}.tar.gz
+Source0:	https://github.com/alavrik/piqi/archive/%{commit}/%{name}-%{version}-%{shortcommit}.tar.gz
 
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
+BuildRequires:	ocaml
 BuildRequires:	ocaml-camlp4-devel
 BuildRequires:	ocaml-findlib
 
@@ -100,6 +101,9 @@ rm -rf %{buildroot}
 
 
 %changelog
+
+* Thu Nov 14 2013 Anton Lavrik <alavrik@piqi.org> 0.6.5-2
+- Cosmetic changes
 
 * Thu Nov 7 2013 Motiejus Jakštys <motiejus.jakstys@spilgames.com> 0.6.5-1
 - Bump upstream 0.6.4 -> 0.6.5
