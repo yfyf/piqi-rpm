@@ -1,13 +1,13 @@
-# upstream version
-VERSION = 0.6.5
-COMMIT = d4e0d42922ae2069e025c73564d5a74bf7b78e11
+# upstream version, must match specfile
+# VERSION = 0.6.5
+# COMMIT = d4e0d42922ae2069e025c73564d5a74bf7b78e11
 
 
 # extracting download URL from .spec works only for rpm-4.11.0 and higher
 # versions; previous versions of rpmspec require source to be already present
-#DOWNLOAD_URL := $(shell rpmspec -P piqi.spec | grep '^Source0:' | cut -f 2)
-SHORTCOMMIT  := $(shell echo $(COMMIT) | cut -c 1-7)
-DOWNLOAD_URL := https://github.com/alavrik/piqi/archive/$(COMMIT)/piqi-$(VERSION)-$(SHORTCOMMIT).tar.gz
+DOWNLOAD_URL := $(shell rpmspec -P piqi.spec | grep '^Source0:' | cut -f 2)
+#SHORTCOMMIT  := $(shell echo $(COMMIT) | cut -c 1-7)
+#DOWNLOAD_URL := https://github.com/alavrik/piqi/archive/$(COMMIT)/piqi-$(VERSION)-$(SHORTCOMMIT).tar.gz
 
 TARBALL      := $(notdir $(DOWNLOAD_URL))
 

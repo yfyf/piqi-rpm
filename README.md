@@ -22,6 +22,12 @@ Install the following packages:
 Building the package
 --------------------
 
+0. Optional: if your `rpm --version` is `=< 4.11.0` then modify `Makefile` to
+   use explicit `VERSION` and `COMMIT` variables, which should match
+   the ones in the `piqi.spec`.
+
+1. Simply run:
+
     make
 
 The resulting binary and source RPM packages will be located here:
@@ -33,11 +39,9 @@ The resulting binary and source RPM packages will be located here:
 Updating the package
 --------------------
 
-To update the package after a new Piqi version is released:
+To update the package after a new Piqi version is released, edit the following
+sections in `piqi.spec`:
 
-1. Set the `VERSION` and `COMMIT` variables in `./Makefile` to the new upstream
-   version.
-2. Edit the following sections in `piqi.spec`:
 ```
     %global commit <COMMIT>
 
@@ -47,4 +51,3 @@ To update the package after a new Piqi version is released:
 
     %changelog
 ```
-
