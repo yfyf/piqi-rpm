@@ -70,6 +70,8 @@ model similar to those of high-level programming languages.
 
 %build
 export OCAMLPATH=
+## override the hardcoded piqi version to be the same as the package version
+echo "%{version}" | sed 's/^v//' > VERSION
 ./configure --prefix=/usr
 make deps
 make
