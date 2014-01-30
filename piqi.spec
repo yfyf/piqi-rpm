@@ -1,8 +1,8 @@
-%global commit d4e0d42922ae2069e025c73564d5a74bf7b78e11
+%global commit c1d9188342630eac79f781bf7e6fbcade79e7f04
 %global shortcommit %(echo %{commit} | cut -c 1-7)
 
 Name:		piqi
-Version:	0.6.5
+Version:	0.6.5.1
 Release:	2%{?dist}
 Summary:	Set of languages and tools for working with structured data
 
@@ -10,7 +10,7 @@ Group:	Development/Languages
 
 License:	ASL 2.0
 URL:		http://piqi.org
-Source0:	https://github.com/alavrik/piqi/archive/%{commit}/%{name}-%{version}-%{shortcommit}.tar.gz
+Source0:	https://github.com/spilgames/piqi/archive/%{commit}/%{name}-%{version}-%{shortcommit}.tar.gz
 
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 
